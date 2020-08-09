@@ -6,7 +6,7 @@ description: "java"
 tag: 博客 
 ---
 
-### 浅谈JAVA String
+### 浅谈JAVA中的String
 
 #### 请问，下面代码输出结果是什么？
 
