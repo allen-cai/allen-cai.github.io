@@ -1,12 +1,16 @@
 ---
-layout: post
+layout: post
 title: "浅谈JAVA String"
 date: 2020-08-09 
 description: "java"
-tag: 博客 
+tag: 博客 
 ---
 
 ### 浅谈JAVA String
+
+　　纯粹记录自己学习路上的一些胡思乱想，如是有任何问题愿您能及时联系我。
+
+mail： `CL30240@163.COM`
 
 #### 请问，下面代码输出结果是什么？
 
