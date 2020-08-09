@@ -36,7 +36,7 @@ System.out.println(fullNameAdd == fullName5);
 
 - `解析：`
 
- 要弄懂上面的问题，其实只需要知道，java中的字符串是储存在字符串常量池中（常量池是专门用来储存字符串常量，可以提高内存的使用率，避免重复开辟空间存储相同的字符串。当创建字符串常量时，JVM会首先检查字符串常量池。如果字符串已经存在常量池中，就会返回池中实例的引用。若池中不存在该字符串，则实例化该字符串放到池中，并返回该实例引用。），String不是基本数据类型，具有不可变性，底层是char类型的value数组。fullName与fullNameAdd在编译时期，就已经将字符串加载到常量池中，且指向的地址是相同的，所以fullName == fullNameAdd。那为什么fullName2 != fullNameAdd？在编译器就能识别出的字符串相加，只能是纯字符串相加，若有变量参杂，只能等到代码运行后，才能确定相加得到的对象保存的位置。纯字符串相加指向的是常量池，而fullName2指向的是一个String对象。所以，fullNameAdd不可能与fullName2，fullName3，fullName4，fullName5相等。
+ 要弄懂上面的问题，其实只需要知道，java中的字符串是储存在字符串常量池中（常量池是专门用来储存字符串常量，可以提高内存的使用率，避免重复开辟空间存储相同的字符串。当创建字符串常量时，JVM会首先检查字符串常量池。如果字符串已经存在常量池中，就会返回池中实例的引用。若池中不存在该字符串，则实例化该字符串放到池中，并返回该实例引用。），String不是基本数据类型，具有不可变性，底层是char类型的value数组。fullName与fullNameAdd在编译时期，就已经将字符串加载到常量池中，且指向的地址是相同的，所以fullName == fullNameAdd。那为什么fullName2 != fullNameAdd？在编译时期只能识别出纯字符串相加，若有变量参杂，只能等到代码运行后，才能确定相加得到的对象保存的位置。纯字符串相加指向的是常量池，而fullName2指向的是一个String对象。所以，fullNameAdd不可能与fullName2，fullName3，fullName4，fullName5相等。
  
 
 #### 请问，下面代码输出结果是什么？
@@ -56,7 +56,7 @@ System.out.println(fullName == fullName2);
 
 - `解析：`
 
-这个问题，是对于上一个问题的扩展。fullName2指向的是一个对象的地址，而fullName指向的是常量池中字符串的地址，所以fullName != fullName2。但是fullName2 = fullName2.intern()之后，fullName == fullName2。这是因为，intern表示将该变量直接指向常量池中字符串，并返回该字符串的地址，所以，若字符串的值想等，他们在常量池中保存的位置必将相等。
+这个问题，是对于上一个问题的扩展。fullName2指向的是一个对象的地址，而fullName指向的是常量池中字符串的地址，所以fullName != fullName2。但是fullName2 = fullName2.intern()之后，fullName == fullName2。这是因为，intern表示将该变量直接指向常量池中字符串，并返回该字符串的地址，所以，若字符串的值相等，他们在常量池中保存的位置必将相等。
   
 #### 请问，多字符串拼接为什么推荐使用StringBuilder相加，而不推荐直接使用“+”相加？
 
